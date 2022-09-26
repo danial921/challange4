@@ -12,4 +12,8 @@ class NoteRepository (val data: NoteDAO) {
         data.insertNote(note)
     }
 
+    fun updateNote(note : DataNote){
+        data.updateNote(note)
+    }
+
 }

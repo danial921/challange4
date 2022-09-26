@@ -3,26 +3,61 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".HomeFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_margin="20dp"
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/rvNote"/>
+            android:padding="20dp"
+            android:id="@+id/header_title"
+            android:background="#733572">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="challange 4"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="25dp"/>
 
+            <ImageButton
+                android:id="@+id/signoutbutton"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentEnd="true"
+                android:background="#00000000"
+                android:src="@drawable/ic_baseline_login_24" />
+
+        </RelativeLayout>
+        <ScrollView
+            android:layout_below="@id/header_title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_margin="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/rvNote"/>
+            </RelativeLayout>
+        </ScrollView>
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/btnAddNote"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="30dp"
             android:layout_marginBottom="30dp"
-            android:layout_marginRight="30dp"/>
+            android:src="@drawable/ic_add"
+            android:backgroundTint="#733572"/>
     </RelativeLayout>
 
 </FrameLayout>

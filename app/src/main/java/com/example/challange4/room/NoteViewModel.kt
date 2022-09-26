@@ -6,7 +6,7 @@ import androidx.lifecycle.LiveData
 
 class NoteViewModel (application : Application) : AndroidViewModel(application){
 
-    val repo : NoteRepository
+    private val repo : NoteRepository
 
     init {
         val dao = NoteDatabase.getInstance(application)!!.noteDao()
@@ -18,4 +18,8 @@ class NoteViewModel (application : Application) : AndroidViewModel(application){
     fun addNote(note : DataNote) {
         repo.insertNote(note)
     }
+    fun updateNote(note : DataNote) {
+        repo.updateNote(note)
+    }
+
 }

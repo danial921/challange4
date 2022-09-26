@@ -45,11 +45,9 @@ class AddNoteFragment : Fragment() {
             val data = DataNote(0,title = title, content = note)
 
             viewModel.addNote(data)
-
-            Toast.makeText(context, "Data Berhasil Dimasukkan", Toast.LENGTH_SHORT).show()
-            findNavController().navigate(R.id.action_addNoteFragment_to_homeFragment)
         }
-
+        Toast.makeText(context, "Data Berhasil Dimasukkan", Toast.LENGTH_SHORT).show()
+        findNavController().navigate(R.id.action_addNoteFragment_to_homeFragment)
     }
 
 }

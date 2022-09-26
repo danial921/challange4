@@ -1,5 +1,7 @@
 package com.example.challange4
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,14 +13,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.challange4.databinding.FragmentHomeBinding
 import com.example.challange4.room.NoteDatabase
 import com.example.challange4.room.NoteViewModel
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment() {
     lateinit var binding: FragmentHomeBinding
     var NoteDB : NoteDatabase? = null
     lateinit var adapterNote : NoteAdapter
     private val viewModel : NoteViewModel by viewModels()
+    lateinit var  sharedPrefs : SharedPreferences
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,12 +36,19 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        sharedPrefs = requireActivity().getSharedPreferences("registerData", Context.MODE_PRIVATE)
 
 //        NoteDB = NoteDatabase.getInstance(this)
         binding.btnAddNote.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_addNoteFragment)
         }
-//        getAllNote()
+
+        binding.signoutbutton.setOnClickListener {
+            var pref = sharedPrefs.edit()
+            pref.clear()
+            pref.apply()
+            findNavController().navigate(R.id.action_homeFragment_to_loginFragment)
+        }
     }
 
 }
